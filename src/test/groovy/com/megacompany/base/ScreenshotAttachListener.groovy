@@ -1,19 +1,16 @@
-package com.test
+package com.megacompany.base
 
 import com.codeborne.selenide.Screenshots
-import com.google.common.io.Files
 import org.spockframework.runtime.AbstractRunListener
 import org.spockframework.runtime.model.ErrorInfo
 import ru.yandex.qatools.allure.Allure
-import ru.yandex.qatools.allure.annotations.Attachment
 import ru.yandex.qatools.allure.events.MakeAttachmentEvent
 
 /**
  * Created by artyom
  */
-class ExampleListener extends AbstractRunListener{
+class ScreenshotAttachListener extends AbstractRunListener{
     def void error(ErrorInfo error) {
-        println "Actual on error logic"
         File screenshot = Screenshots.getLastScreenshot()
         makeAttachment(screenshot, "image/png")
     }
