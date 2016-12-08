@@ -13,8 +13,7 @@ class GlobalSpecExtension implements IGlobalExtension{
 
     @Override
     void visitSpec(SpecInfo spec) {
-        spec.addListener(new ScreenshotAttachListener()) //add screenshot listener
-        spec.addListener(new StoryListener()) //add story bref
+        spec.addListener(new CustomListener()) //add screenshot listener
     }
 
     @Override

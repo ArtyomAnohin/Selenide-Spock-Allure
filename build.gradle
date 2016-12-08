@@ -4,6 +4,8 @@ version '1.0-SNAPSHOT'
 apply plugin: 'groovy'
 apply plugin: 'ru.d10xa.allure'
 
+defaultTasks 'clean', 'browserChrome', 'allureReport'
+
 repositories {
     mavenCentral()
 }

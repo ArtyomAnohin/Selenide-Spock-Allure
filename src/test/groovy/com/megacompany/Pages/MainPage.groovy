@@ -2,7 +2,6 @@ package com.megacompany.Pages
 
 import com.codeborne.selenide.Condition
 import com.codeborne.selenide.ElementsCollection
-import com.codeborne.selenide.SelenideElement
 import org.openqa.selenium.By
 import ru.yandex.qatools.allure.annotations.Step
 
@@ -18,21 +17,32 @@ class MainPage{
     def openMainPage(){
         open("http://computer-database.gatling.io/")
     }
-
+    @Step
     ElementsCollection filterByName(String name){
         $("#searchbox").val(name)
         $("#searchsubmit").click()
-        return getFilterResults()
-    }
-    ElementsCollection getFilterResults() {
-        return $$(By.xpath(".//tbody/tr/td[1]"))
     }
     @Step
-    def clickAddNewcomputerButton(){
+    ElementsCollection getNameFilterResults() {
+        return $$(By.xpath(".//tbody/tr/td[1]/a"))
+    }
+    @Step
+    ElementsCollection getCompanyFilterResults() {
+        return $$(By.xpath(".//tbody/tr/td[4]"))
+    }
+    @Step
+    def clickAddNewComputerButton(){
         $("#add").click()
     }
+    @Step("Should have text: {0}")
+    def acceptMessage(String text){
+        return $(".alert-message").shouldHave(Condition.text(text))
+    }
     @Step
-    def acceptMessage(){
-        return $(".alert-message")
+    def removeComputer(String name){
+        filterByName(name)
+        getNameFilterResults().first().click()
+        $(".btn.danger").click()
+        acceptMessage("Done! Computer has been deleted")
     }
 }
