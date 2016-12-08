@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.open
  * Created by artyom
  */
 class MainPage{
-
+    @Step
     def openMainPage(){
         open("http://computer-database.gatling.io/")
     }
@@ -27,11 +27,11 @@ class MainPage{
     ElementsCollection getFilterResults() {
         return $$(By.xpath(".//tbody/tr/td[1]"))
     }
-
+    @Step
     def clickAddNewcomputerButton(){
         $("#add").click()
     }
-
+    @Step
     def acceptMessage(){
         return $(".alert-message")
     }

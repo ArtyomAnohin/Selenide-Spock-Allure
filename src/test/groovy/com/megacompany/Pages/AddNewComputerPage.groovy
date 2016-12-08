@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.$
  * Created by artyom
  */
 class AddNewComputerPage {
+    @Step
     def fillAddNewComputerForm(String name, String introducedDate, String discontinuedDate, String company) {
         $("#name").val(name)
         assert introducedDate ==~ /\d{4}\-\d{2}\-\d{2}/

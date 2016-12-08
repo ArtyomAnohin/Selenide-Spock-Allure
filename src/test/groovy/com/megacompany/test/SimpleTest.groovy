@@ -22,7 +22,7 @@ class SimpleTest extends Specification {
         when: "Enter apple"
         mainPage.filterByName("apple")
         then: "Result table should have 10 rows"
-        mainPage.filterResults.shouldHaveSize(10)
+        mainPage.filterResults.shouldHaveSize(11)
     }
 
     def "Ability to add new computer"() {
